@@ -67,12 +67,15 @@ def search_products(query: str) -> tuple:
     if df.empty:
         return None, "No products found on the specified websites.", df
         
-    fig = px.bar(df, x='product_name', y='price_inr', color='source', title="☆ Price Comparison (INR) ☆", template="plotly_dark")
+    # Determine the currency symbol for display (assuming consistent currency per search)
+    currency_display_symbol = df['currency_symbol'].iloc[0] if not df.empty else "₹"
+
+    fig = px.bar(df, x='product_name', y='price_value', color='source', title=f"☆ Price Comparison ({currency_display_symbol}) ☆", template="plotly_dark")
     
     stats = f"""
     - **(｡◕‿◕｡) Products Found:** {len(df)}
-    - **(｡◕‿◕｡) Average Price:** ₹{df['price_inr'].mean():,.2f}
-    - **(｡◕‿◕｡) Lowest Price:** ₹{df['price_inr'].min():,.2f}
+    - **(｡◕‿◕｡) Average Price:** {currency_display_symbol}{df['price_value'].mean():,.2f}
+    - **(｡◕‿◕｡) Lowest Price:** {currency_display_symbol}{df['price_value'].min():,.2f}
     - **(｡◕‿◕｡) CSV saved to:** `{csv_path}`
     """
     return fig, stats, df

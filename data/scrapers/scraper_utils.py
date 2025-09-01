@@ -6,7 +6,7 @@ def scrape_multiple_sources(query: str) -> pd.DataFrame:
     df = search_google_shopping(query)
     
     if not df.empty:
-        df['price_inr'] = df['price_inr'] 
-        return df.sort_values('price_inr')
+        # The price_value and currency_symbol columns are now directly from search_google_shopping
+        return df.sort_values('price_value')
     
     return pd.DataFrame()
