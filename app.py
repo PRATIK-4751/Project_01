@@ -67,7 +67,6 @@ def search_products(query: str) -> tuple:
     if df.empty:
         return None, "No products found on the specified websites.", df
         
-    # Determine the currency symbol for display (assuming consistent currency per search)
     currency_display_symbol = df['currency_symbol'].iloc[0] if not df.empty else "₹"
 
     fig = px.bar(df, x='product_name', y='price_value', color='source', title=f"☆ Price Comparison ({currency_display_symbol}) ☆", template="plotly_dark")
@@ -102,7 +101,7 @@ if "data_chat_messages" not in st.session_state:
 if "scraped_data" not in st.session_state:
     st.session_state.scraped_data = None
 if "ollama_model" not in st.session_state:
-    st.session_state.ollama_model = "qwen2.5-coder:7b" # Default model
+    st.session_state.ollama_model = "qwen2.5-coder:7b" 
 
 if page == "Product Analysis":
     st.title("✨ DataWeaver ✨")
@@ -134,13 +133,12 @@ if page == "Product Analysis":
 elif page == "Chat with Data (Ollama)":
     st.title("Chat with Your Data (｡◕‿◕｡)")
     
-    # Model selection input for Ollama
     ollama_model_input = st.text_input(
         "Enter Ollama Model Name:",
         value=st.session_state.ollama_model,
         placeholder="e.g., qwen2.5-coder:7b"
     )
-    st.session_state.ollama_model = ollama_model_input # Update session state
+    st.session_state.ollama_model = ollama_model_input 
 
     if st.session_state.scraped_data is not None:
         for msg in st.session_state.data_chat_messages:
