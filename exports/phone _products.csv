@@ -1,0 +1,13 @@
+product_name,price_usd,rating,reviews,source
+phone  Walmart Model 1,603.3686366842784,4.4,236,Walmart
+phone  Newegg Model 2,830.1254369363164,4.7,678,Newegg
+phone  Ebay Model 3,941.6228356344973,4.6,770,eBay
+phone  Ebay Model 1,968.3629929510939,4.2,965,eBay
+phone  Newegg Model 3,974.8698312784145,4.4,113,Newegg
+phone  Bestbuy Model 1,975.9816349717904,3.6,625,Best Buy
+phone  Bestbuy Model 2,1130.922251026751,4.2,75,Best Buy
+phone  Newegg Model 1,1155.0877428111428,3.5,330,Newegg
+phone  Bestbuy Model 3,1286.813596714043,3.9,679,Best Buy
+phone  Walmart Model 3,1651.41729039307,4.5,225,Walmart
+phone  Ebay Model 2,1683.242071761801,4.4,114,eBay
+phone  Walmart Model 2,1778.875891622912,4.3,359,Walmart

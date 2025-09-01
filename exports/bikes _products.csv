@@ -1,0 +1,13 @@
+product_name,price_usd,rating,reviews,source
+bikes  Ebay Model 2,617.9056894607647,3.9,395,eBay
+bikes  Bestbuy Model 2,986.5112919613607,4.6,726,Best Buy
+bikes  Walmart Model 3,1189.213393425864,4.8,989,Walmart
+bikes  Ebay Model 1,1239.3735150026937,3.7,896,eBay
+bikes  Walmart Model 1,1349.8560993082315,3.5,465,Walmart
+bikes  Walmart Model 2,1478.9853670979285,5.0,874,Walmart
+bikes  Bestbuy Model 3,1531.6729912059877,4.5,389,Best Buy
+bikes  Newegg Model 2,1642.326228958767,3.9,923,Newegg
+bikes  Ebay Model 3,1699.2001348962503,4.1,458,eBay
+bikes  Newegg Model 3,1760.09555289904,4.9,852,Newegg
+bikes  Newegg Model 1,1798.1803154888723,4.7,697,Newegg
+bikes  Bestbuy Model 1,2197.5335059238487,4.5,259,Best Buy

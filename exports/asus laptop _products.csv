@@ -1,0 +1,20 @@
+product_name,price_usd,rating,reviews,source
+ASUS,229.0,3.7,128,Amazon
+ASUS,279.0,3.9,575,Amazon
+ASUS,301.0,4.7,350,Amazon
+ASUS,405.0,4.6,545,Amazon
+ asus laptop  Newegg Model 3,826.8703420856731,4.5,315,Newegg
+ASUS,949.0,4.2,650,Amazon
+ asus laptop  Walmart Model 1,950.6838669327408,4.6,72,Walmart
+ asus laptop  Ebay Model 3,1082.7583787884832,4.9,531,eBay
+ asus laptop  Ebay Model 1,1112.3039260849791,3.8,572,eBay
+ asus laptop  Newegg Model 1,1266.9783010565034,3.7,975,Newegg
+ASUS,1274.0,4.7,496,Amazon
+ asus laptop  Newegg Model 2,1302.3685562779847,4.6,531,Newegg
+ asus laptop  Walmart Model 3,1516.1795391242176,5.0,100,Walmart
+ asus laptop  Ebay Model 2,1760.450570359579,4.9,176,eBay
+ asus laptop  Bestbuy Model 3,1904.7533616562514,4.6,684,Best Buy
+ asus laptop  Walmart Model 2,1943.4663880544379,4.0,954,Walmart
+ asus laptop  Bestbuy Model 1,2137.367918379078,4.0,729,Best Buy
+ASUS,2159.0,3.6,511,Amazon
+ asus laptop  Bestbuy Model 2,2456.893884635295,3.7,198,Best Buy

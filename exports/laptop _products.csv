@@ -1,0 +1,13 @@
+product_name,price_usd,rating,reviews,source
+laptop  Ebay Model 3,558.5337328347771,4.4,933,eBay
+laptop  Bestbuy Model 3,898.6677926737424,4.8,465,Best Buy
+laptop  Walmart Model 3,911.4819559244418,4.6,248,Walmart
+laptop  Ebay Model 2,1007.4698678874349,4.3,734,eBay
+laptop  Ebay Model 1,1193.4934650753166,4.4,619,eBay
+laptop  Bestbuy Model 1,1216.214461135252,4.1,53,Best Buy
+laptop  Newegg Model 2,1674.3560509574604,4.0,610,Newegg
+laptop  Bestbuy Model 2,1763.018275471037,4.9,797,Best Buy
+laptop  Walmart Model 1,1791.3388601301947,4.0,608,Walmart
+laptop  Walmart Model 2,1825.6301840497472,4.2,714,Walmart
+laptop  Newegg Model 3,2047.7339627977321,4.4,585,Newegg
+laptop  Newegg Model 1,2093.0042678262894,4.6,58,Newegg
