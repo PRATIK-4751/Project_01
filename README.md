@@ -76,7 +76,7 @@ echo "SERPAPI_API_KEY=your_api_key_here" > .env
 
 ### Launch (◕‿◕)
 ```bash
-python app.py
+streamlit run app.py
 ```
 
 ---
