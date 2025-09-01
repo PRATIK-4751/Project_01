@@ -9,7 +9,21 @@ import google.generativeai as genai
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+def get_gemini_api_key():
+    """Get Gemini API key from environment or Streamlit secrets"""
+    
+    api_key = os.getenv("GEMINI_API_KEY")
+ 
+
+    if not api_key:
+        try:
+            api_key = st.secrets["GEMINI_API_KEY"]
+        except (KeyError, AttributeError):
+            pass
+    
+    return api_key
+
+GEMINI_API_KEY = get_gemini_api_key()
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
 
@@ -35,7 +49,7 @@ def get_ollama_response(model_name: str, prompt: str, context: str = "") -> str:
 
 def get_gemini_response(prompt: str, history: list):
     if not GEMINI_API_KEY:
-        return "Gemini API key not configured. Please set it in the .env file. (｡•́︿•̀｡)"
+        return "Gemini API key not configured. Please set it in the .env file. (｡•̀ᴗ•́｡)"
     try:
         model = genai.GenerativeModel('gemini-1.5-flash')
         chat = model.start_chat(history=history)
@@ -57,8 +71,8 @@ def search_products(query: str) -> tuple:
     
     stats = f"""
     - **(｡◕‿◕｡) Products Found:** {len(df)}
-    - **(｡◕‿◕｡) Average Price:** ${df['price_inr'].mean():,.2f}
-    - **(｡◕‿◕｡) Lowest Price:** ${df['price_inr'].min():,.2f}
+    - **(｡◕‿◕｡) Average Price:** ₹{df['price_inr'].mean():,.2f}
+    - **(｡◕‿◕｡) Lowest Price:** ₹{df['price_inr'].min():,.2f}
     - **(｡◕‿◕｡) CSV saved to:** `{csv_path}`
     """
     return fig, stats, df
@@ -112,7 +126,7 @@ if page == "Product Analysis":
                 else:
                     st.warning(stats)
         else:
-            st.warning("Please enter a product name to search. (´・ω・`)")
+            st.warning("Please enter a product name to search. (´･ω･`)")
 
 elif page == "Chat with Data (Ollama)":
     st.title("Chat with Your Data (｡◕‿◕｡)")

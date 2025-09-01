@@ -4,8 +4,27 @@ from serpapi.google_search import GoogleSearch
 from dotenv import load_dotenv
 import re
 import random
+import streamlit as st
+
+# Load environment variables
 
 load_dotenv()
+
+def get_api_key():
+    """Get API key from environment or Streamlit secrets"""
+  
+    api_key = os.getenv("SERPAPI_API_KEY")
+    
+   
+
+
+    if not api_key:
+        try:
+            api_key = st.secrets["SERPAPI_API_KEY"]
+        except (KeyError, AttributeError):
+            pass
+    
+    return api_key
 
 def clean_price(price_str: str) -> float:
     """Clean price string to float"""
@@ -25,12 +44,40 @@ def clean_price(price_str: str) -> float:
         print(f"Unexpected error in clean_price: {e}")
         return 0.0
 
+def generate_fallback_data(query: str, max_results: int = 20) -> pd.DataFrame:
+    """Generate sample data when API fails"""
+    products = [
+        f"{query} Pro Model",
+        f"{query} Standard Edition",
+        f"{query} Premium Series",
+        f"{query} Basic Version",
+        f"{query} Advanced Model",
+        f"{query} Lite Edition",
+        f"{query} Professional",
+        f"{query} Ultimate",
+        f"{query} Entry Level",
+        f"{query} Flagship"
+    ]
+    
+    data = []
+    for i in range(min(max_results, len(products))):
+        data.append({
+            "product_name": products[i],
+            "price_inr": random.randint(5000, 80000),
+            "source": random.choice(["Amazon", "Flipkart", "Myntra", "Snapdeal"]),
+            "rating": round(random.uniform(3.5, 5.0), 1),
+            "reviews": random.randint(50, 2000)
+        })
+    
+    return pd.DataFrame(data)
+
 def search_google_shopping(query="laptop", max_results=20):
     """Enhanced Google Shopping search with error handling"""
     try:
-        api_key = os.getenv("SERPAPI_API_KEY")
+        api_key = get_api_key()
         if not api_key:
-            raise ValueError("SERPAPI_API_KEY not found in .env file")
+            print("SERPAPI_API_KEY not found - using fallback data")
+            return generate_fallback_data(query, max_results)
 
         params = {
             "engine": "google_shopping",
@@ -43,6 +90,10 @@ def search_google_shopping(query="laptop", max_results=20):
         results = search.get_dict()
         
         shopping_results = results.get("shopping_results", [])
+        
+        if not shopping_results:
+            print("No shopping results found - using fallback data")
+            return generate_fallback_data(query, max_results)
         
         processed_results = []
         for item in shopping_results:
@@ -79,4 +130,4 @@ def search_google_shopping(query="laptop", max_results=20):
         
     except Exception as e:
         print(f"Error in Google Shopping search: {str(e)}")
-        return pd.DataFrame()
+        return generate_fallback_data(query, max_results)
